@@ -661,6 +661,40 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
+}
+
+.cert-img-actual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.cert-card:hover .cert-img-actual,
+.cert-card:active .cert-img-actual {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.resume-link-nav {
+    color: var(--accent-primary) !important;
+    font-weight: 700 !important;
+    border: 1px solid var(--accent-primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+}
+.resume-link-nav:hover {
+    background: rgba(88, 166, 255, 0.1);
+}
+.resume-link-nav::after {
+    display: none;
 }
 
 .cert-placeholder {
