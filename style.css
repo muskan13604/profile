@@ -32,6 +32,21 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Light Mode Variables Overrides */
+body.light-mode {
+    --bg-color: #f6f8fa;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-main: #1f2328;
+    --text-sec: #57606a;
+    --accent-primary: #0969da;
+    --accent-secondary: #8250df;
+    --nav-bg: rgba(246, 248, 250, 0.7);
+    --nav-bg-scrolled: rgba(246, 248, 250, 0.95);
+    --nav-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* ======= Background Orbs ======= */
@@ -192,11 +207,16 @@ body {
     top: 0;
     width: 100%;
     z-index: 1000;
-    background: rgba(13, 17, 23, 0.7);
+    background: var(--nav-bg, rgba(13, 17, 23, 0.7));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     border-bottom: 1px solid var(--card-border);
     transition: var(--transition);
+}
+
+.navbar.scrolled {
+    background: var(--nav-bg-scrolled, rgba(13, 17, 23, 0.95));
+    box-shadow: var(--nav-shadow, 0 4px 20px rgba(0, 0, 0, 0.5));
 }
 
 .nav-container {
@@ -255,6 +275,25 @@ body {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: var(--text-main);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle:hover {
+    color: var(--accent-primary);
 }
 
 .hamburger {

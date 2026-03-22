@@ -103,11 +103,34 @@ document.addEventListener('DOMContentLoaded', () => {
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
-            navbar.style.background = 'rgba(13, 17, 23, 0.9)';
-            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(13, 17, 23, 0.7)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // ======= Theme Toggle =======
+    const themeBtn = document.getElementById('theme-btn');
+    const themeIcon = themeBtn.querySelector('i');
+    
+    // Check saved theme
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+    
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-mode');
+        if (document.body.classList.contains('light-mode')) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+            localStorage.setItem('portfolio-theme', 'light');
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+            localStorage.setItem('portfolio-theme', 'dark');
         }
     });
 
